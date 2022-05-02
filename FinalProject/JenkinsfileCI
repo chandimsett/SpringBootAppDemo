@@ -6,7 +6,7 @@ node {
 	}
 
 	stage('Build image') {
-		app = docker.build("${dockerhubaccountid}/${application}:${BUILD_NUMBER}")
+		app = docker.build("${dockerhubaccountid}/${application}:${BUILD_NUMBER}","./FinalProject/")
 	}
 
 	stage('Push image') {
