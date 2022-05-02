@@ -9,9 +9,10 @@ node {
 	}
 	stage('Stop image') {
 		steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh ("docker stop springbootdemo && docker systm prune --force")
-                }
+			catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+			    sh ("docker stop springbootdemo && docker systm prune --force")
+			}
+		}
 	}
 	stage('Deploy') {
 		sh ("docker run --name springbootdemo -d -p 81:8080 -v /var/log/:/var/log/ ${dockerhubaccountid}/${application}:latest")
