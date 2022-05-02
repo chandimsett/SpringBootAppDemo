@@ -7,9 +7,11 @@ node {
 	stage('Pull image') {
 		sh ("docker pull ${dockerhubaccountid}/${application}:latest")
 	}
-
+	stage('Stop image') {
+		sh ("docker stop springbootdemo && docker systm prune --force")
+	}
 	stage('Deploy') {
-		sh ("docker run -d -p 81:8080 -v /var/log/:/var/log/ ${dockerhubaccountid}/${application}:latest")
+		sh ("docker run --name springbootdemo -d -p 81:8080 -v /var/log/:/var/log/ ${dockerhubaccountid}/${application}:latest")
 	}
 
 }
