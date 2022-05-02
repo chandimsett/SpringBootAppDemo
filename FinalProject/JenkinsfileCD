@@ -7,7 +7,6 @@ node {
 	stage('Pull image') {
 		sh ("docker pull ${dockerhubaccountid}/${application}:latest")
 	}
-	}
 
 	stage('Deploy') {
 		sh ("docker run -d -p 81:8080 -v /var/log/:/var/log/ ${dockerhubaccountid}/${application}:latest")
