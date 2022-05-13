@@ -7,7 +7,7 @@ node {
 	stage('Pull image') {
 		sh ("docker pull ${dockerhubaccountid}/${application}:latest")
 	}
-	stage('Stop image') {
+	stage('Stop Container') {
 		sh ("docker stop springbootdemo || true")
 		sh ("docker system prune --force")
 	}
